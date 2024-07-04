@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILDPATH=$1
+BUILDDIR=$1
 EXPECTED_COVERAGE=80
 MINIMUM_COVERAGE=$((EXPECTED_COVERAGE-20))
 REDFONT="\033[0;31m"
@@ -8,7 +8,7 @@ GREENFONT="\033[0;32m"
 YELLOWFONT="\033[0;33m"
 NOCOLORFONT="\033[0m"
 
-output=$(make -C $BUILDPATH coverage 2>/dev/null | sed -n "/Overall/,/functions/p")
+output=$(make -C $BUILDDIR coverage 2>/dev/null | sed -n "/Overall/,/functions/p")
 lines=$(echo "$output" | grep lines | sed -r "s/^.*lines.*: ([0-9.]+)%.*$/\1/g") 
 funcs=$(echo "$output" | grep functions | sed -r "s/^.*functions.*: ([0-9.]+)%.*$/\1/g")
 lines=${lines%%.*}
