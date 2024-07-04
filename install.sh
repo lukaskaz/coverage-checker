@@ -1,13 +1,15 @@
 #!/bin/bash
 
 INSTALLDIR=$1
-SCRIPT=check-coverage.sh
+SCRIPTTOINSTALL=check-coverage.sh
+RETCODE=1
 
 if [ -n "$INSTALLDIR" -a -d "$INSTALLDIR" ]; then
-	cp $SCRIPT $INSTALLDIR
-	exit $?
+	cp $SCRIPTTOINSTALL $INSTALLDIR
+	RETCODE=$?
 else
-	echo "Install dir: '$INSTALLDIR' is invalid"
+	echo "Install directory: '$INSTALLDIR' is invalid"
 fi
-exit 1
+
+exit $RETCODE
 
