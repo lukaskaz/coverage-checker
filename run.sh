@@ -1,13 +1,13 @@
 #!/bin/bash
 
-SCRIPTTORUN=./check-coverage.sh
+SCRIPTTORUN=check-coverage.sh
 RETCODE=1
 
-if [ -f "$SCRIPT" ]; then
-	$SCRIPTTORUN
+if [ -n "$SCRIPTTORUN" -a -f "$SCRIPTTORUN" ]; then
+	./$SCRIPTTORUN
 	RETCODE=$?
 else
-	echo "Script: '$SCRIPTTORUN' is invalid"
+	echo "Script to run: '$SCRIPTTORUN' is invalid"
 fi
 
 exit $RETCODE
