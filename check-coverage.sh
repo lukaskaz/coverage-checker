@@ -8,6 +8,7 @@ GREENFONT="\033[0;32m"
 YELLOWFONT="\033[0;33m"
 NOCOLORFONT="\033[0m"
 
+make -C $BUILDDIR coverage
 output=$(make -C $BUILDDIR coverage 2>/dev/null | sed -n "/Overall/,/functions/p")
 lines=$(echo "$output" | grep lines | sed -r "s/^.*lines.*: ([0-9.]+)%.*$/\1/g") 
 funcs=$(echo "$output" | grep functions | sed -r "s/^.*functions.*: ([0-9.]+)%.*$/\1/g")
